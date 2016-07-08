@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="peerAngular">
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Peer AngularJS</title>
+  </head>
+  <body ng-controller="MainController">
+    <h1>Peer AngularJS!</h1>
+    <h2>¬ To-Do List ¬</h2>
+    <div class="inputs">
+      <form>
+      <input type="text" ng-model="task" placeholder="What do you want to accomplish today?"/>
+      <button class="add-item" ng-click="addItem()">Git 'R Done!</button>
+    </form>
+    </div>
+    <div class="task-list">
+      <ul>
+        <li ng-repeat="task in taskList track by $index">
+          <input type="checkbox" ng-model="task.remove"/>
+          <button class="remove-item" ng-click="removeTask($index)">Clear</button>
+          {{task.task}}
+        </li>
+        <button class="remove-checked" ng-click="removeSelected()">Remove Checked</button>
+      </ul>
+    </div>
+  </body>
+</html>
