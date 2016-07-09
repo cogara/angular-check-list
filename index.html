@@ -4,29 +4,48 @@
     <meta charset="utf-8">
     <script src="angular.min.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+
     <title>Peer AngularJS</title>
   </head>
   <body ng-controller="MainController">
-    <h1>Peer AngularJS!</h1>
-    <h2>¬ To-Do List ¬</h2>
-    <div class="inputs">
-      <form>
-        <input type="text" ng-model="task" placeholder="What do you want to accomplish today?"/>
-        <button class="add-item" ng-click="addItem()">Git 'R Done!</button>
-      </form>
+    <div class="main">
+      <div class="container">
+        <h1>Peer AngularJS!</h1>
+        <h2>√ To-Do List √</h2>
+        <div class="inputs">
+          <form>
+            <div class="flex">
+              <input type="text" ng-model="task" placeholder="What do you want to accomplish today?"/>
+              <button class="add-item btn-primary-outline" ng-click="addItem()">Git 'R Done!</button>
+            </div>
+          </form>
+        </div>
+        <div class="task-list">
+          <div class="invalid" ng-model="invalid">{{invalid}}</div>
+          <ul>
+            <li ng-repeat="task in taskList track by $index">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <input type="checkbox" ng-model="task.remove"/>
+                </span>
+                <span class="form-control">
+                  {{task.task}}
+                </span>
+                <span class="input-group-addon">
+                  <button class="remove-item btn-secondary btn-sm" ng-click="removeTask($index)">Remove</button>
+                </span>
+              </div>
+            </li>
+            <button class="select-all btn-secondary" ng-click="selectAll()">Select All</button>
+            <button class="remove-checked btn-primary" ng-click="removeSelected()">Remove Checked</button>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="task-list">
-      <div class="invalid" ng-model="invalid">{{invalid}}</div>
-      <ul>
-        <li ng-repeat="task in taskList track by $index">
-          <input type="checkbox" ng-model="task.remove"/>
-          <button class="remove-item" ng-click="removeTask($index)">Clear</button>
-          {{task.task}}
-        </li>
-        <button class="select-all" ng-click="selectAll()">Select All</button>
-        <button class="remove-checked" ng-click="removeSelected()">Remove Checked</button>
-      </ul>
+    <div class="footer">
+      <div>Created By: Connor O'Gara</div>
     </div>
   </body>
 </html>
