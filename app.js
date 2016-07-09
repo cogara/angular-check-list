@@ -44,4 +44,9 @@ angular.module('peerAngular').controller('MainController', function($scope){
     }
   }
 
+  $scope.logArray = function() {
+    //testing purposes, view the object array by clicking on footer
+    console.log($scope.taskList);
+  }
+
 })
